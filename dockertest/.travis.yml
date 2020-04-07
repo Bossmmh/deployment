@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "12"
+services:
+  - docker
+
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t ma15201452637/myweb:latest .
+  - docker push ma15201452637/myweb:latest
